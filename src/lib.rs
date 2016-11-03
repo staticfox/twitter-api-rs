@@ -35,6 +35,7 @@ mod api_twitter_soft {
 pub struct Tweet {
     pub created_at: String,
     pub text: String,
+    pub id: i64,
 }
 
 impl Tweet {
