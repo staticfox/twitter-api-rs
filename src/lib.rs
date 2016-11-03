@@ -32,10 +32,44 @@ mod api_twitter_soft {
 }
 
 #[derive(Clone, Debug, RustcEncodable, RustcDecodable)]
+pub struct User {
+    pub id: i64,
+    pub statuses_count: i32,
+    pub favourites_count: i32,
+    pub protected: bool,
+    pub profile_text_color: String,
+    pub profile_image_url: String,
+    pub name: String,
+    pub profile_sidebar_fill_color: String,
+    pub listed_count: i32,
+    pub following: Option<bool>,
+    pub profile_background_tile: bool,
+    pub utc_offset: Option<i32>,
+    pub description: Option<String>,
+    pub location: Option<String>,
+    pub contributors_enabled: bool,
+    pub verified: bool,
+    pub profile_link_color: String,
+    pub followers_count: i32,
+    pub url: Option<String>,
+    pub default_profile: bool,
+    pub profile_sidebar_border_color: String,
+    pub screen_name: String,
+    pub default_profile_image: bool,
+    pub notifications: Option<bool>,
+    pub show_all_inline_media: Option<bool>,
+    pub geo_enabled: bool,
+    pub profile_use_background_image: bool,
+    pub friends_count: i32,
+    pub id_str: String,
+}
+
+#[derive(Clone, Debug, RustcEncodable, RustcDecodable)]
 pub struct Tweet {
     pub created_at: String,
     pub text: String,
     pub id: i64,
+    pub user: User,
 }
 
 impl Tweet {
