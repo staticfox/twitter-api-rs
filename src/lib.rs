@@ -70,6 +70,13 @@ pub struct Tweet {
     pub text: String,
     pub id: i64,
     pub user: User,
+    pub in_reply_to_screen_name: Option<String>,
+    pub in_reply_to_status_id: Option<i64>,
+    pub in_reply_to_status_id_str: Option<String>,
+    pub in_reply_to_user_id: Option<i64>,
+    pub in_reply_to_user_id_str: Option<String>,
+    pub retweet_count: i32,
+    pub retweeted: bool,
 }
 
 impl Tweet {
