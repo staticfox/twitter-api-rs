@@ -142,6 +142,20 @@ pub fn update_status(consumer: &Token, access: &Token, status: &str) -> Result<(
     Ok(())
 }
 
+/// function to reply to a status
+/// This function takes as arguments the consumer key, the access key, the reply id, and the status.
+pub fn reply_to_status(consumer: &Token, access: &Token, reply_id: i64, status: &str) -> Result<(), Error> {
+    let mut param = HashMap::new();
+    let _ = param.insert("status".into(), status.into());
+    let _ = param.insert("in_reply_to_status_id".into(), reply_id.to_string().into());
+    println!("{:?}", param);
+    let _ = try!(oauth::post(api_twitter_soft::UPDATE_STATUS,
+                             consumer,
+                             Some(access),
+                             Some(&param)));
+    Ok(())
+}
+
 pub fn get_last_tweets(consumer: &Token, access: &Token) -> Result<Vec<Tweet>, Error> {
     let bytes = try!(oauth::get(api_twitter_soft::HOME_TIMELINE,
                                 consumer,
