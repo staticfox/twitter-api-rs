@@ -148,7 +148,6 @@ pub fn reply_to_status(consumer: &Token, access: &Token, reply_id: i64, status: 
     let mut param = HashMap::new();
     let _ = param.insert("status".into(), status.into());
     let _ = param.insert("in_reply_to_status_id".into(), reply_id.to_string().into());
-    println!("{:?}", param);
     let _ = try!(oauth::post(api_twitter_soft::UPDATE_STATUS,
                              consumer,
                              Some(access),
